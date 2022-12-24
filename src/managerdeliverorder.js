@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 
-import { Card, CardContent, Typography } from "@mui/material";
+import { Card, 
+  CardContent, 
+  Typography } from "@mui/material";
 import axios from "axios";
 
 import Loader from "./loader";
@@ -17,7 +19,8 @@ function ManagerDeliveryOrder() {
   const loadData = () => {
     setLoad(true)
     setTimeout(() => {
-      axios.get(baseUrl("/manager/deliveredorders/"), {
+      axios
+      .get(baseUrl("/manager/deliveredorders/"), {
         headers: {
           'Accept': 'application/json',
           "Content-Type": 'application/json',
@@ -32,7 +35,8 @@ function ManagerDeliveryOrder() {
   }
 
   const profileData = () => {
-    axios.get(baseUrl("/profile/"), {
+    axios
+    .get(baseUrl("/profile/"), {
       headers: {
         'Accept': 'application/json',
         "Content-Type": 'application/json',
@@ -44,7 +48,8 @@ function ManagerDeliveryOrder() {
   }
 
   const loadData1 = () => {
-    axios.get(baseUrl("/cartlist/"), {
+    axios
+    .get(baseUrl("/cartlist/"), {
       headers: {
         'Accept': 'application/json',
         "Content-Type": 'application/json',
@@ -84,7 +89,10 @@ function ManagerDeliveryOrder() {
                             return (
                               <>
                                 <center>
-                                  <Card sx={{ maxWidth: 600, height: 400, mt: 10, backgroundImage: 'url("https://techstory.in/wp-content/uploads/2015/05/food-delivery.jpg")' }}>
+                                  <Card 
+                                  sx={{ maxWidth: 600, 
+                                  height: 400, mt: 10, 
+                                  backgroundImage: 'url("https://techstory.in/wp-content/uploads/2015/05/food-delivery.jpg")' }}>
                                     <CardContent>
                                       <Typography>Name:{lists.username}</Typography>
                                       <Typography>Address:{lists.profile?.address}</Typography>

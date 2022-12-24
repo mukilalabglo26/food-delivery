@@ -2,7 +2,22 @@ import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import axios from "axios";
-import { Button, Card, CardContent, FormControl, FormControlLabel, FormLabel, IconButton, InputAdornment, InputLabel, OutlinedInput, Radio, RadioGroup, TextField, Typography } from "@mui/material";
+import {
+  Button,
+  Card,
+  CardContent,
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  IconButton,
+  InputAdornment,
+  InputLabel,
+  OutlinedInput,
+  Radio,
+  RadioGroup,
+  TextField,
+  Typography
+} from "@mui/material";
 import CloseIcon from '@mui/icons-material/Close';
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 
@@ -66,7 +81,8 @@ function Register() {
     }
     else {
       setApidata(apidata)
-      axios.post(baseUrl("/register/"), apidata)
+      axios
+        .post(baseUrl("/register/"), apidata)
         .then((response) => console.log(response.data))
         .catch((error) => console.log(error))
       navigate('/login')
@@ -78,20 +94,48 @@ function Register() {
       <div>
         <br /><br />
         <center>
-          <Card sx={{ maxWidth: 550, backgroundColor: "pink" }}>
+          <Card sx={{
+            maxWidth: 550,
+            backgroundColor: "pink"
+          }}>
             <CardContent>
-              <IconButton onClick={handleClose} sx={{ ml: -60 }}><CloseIcon /></IconButton>
+              <IconButton
+                onClick={handleClose}
+                sx={{ ml: -60 }}>
+                <CloseIcon />
+              </IconButton>
               <Typography variant="h5">customer_Register</Typography>
               <br />
               <br />
-              <TextField type="text" label="username" name="username" color="secondary" onChange={handleChange} inputRef={el => inputRef.current.username = el} />
+              <TextField
+                type="text"
+                label="username"
+                name="username"
+                color="secondary"
+                onChange={handleChange}
+                inputRef={el => inputRef.current.username = el} />
               <br />
               <br />
-              <TextField type='email' label="email" name="email" color="secondary" onChange={handleChange} inputRef={el => inputRef.current.email = el} />
+              <TextField
+                type='email'
+                label="email"
+                name="email"
+                color="secondary"
+                onChange={handleChange}
+                inputRef={el => inputRef.current.email = el} />
               <br />
               <br />
-              <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
-                <InputLabel htmlFor="outlined-adornment-password" color="secondary">Password</InputLabel>
+              <FormControl
+                sx={{
+                  m: 1,
+                  width: '25ch'
+                }}
+                variant="outlined">
+                <InputLabel
+                  htmlFor="outlined-adornment-password"
+                  color="secondary">
+                  Password
+                </InputLabel>
                 <OutlinedInput
                   id="outlined-adornment-password"
                   type={showPassword ? 'text' : 'password'}
@@ -107,7 +151,8 @@ function Register() {
                       </IconButton>
                     </InputAdornment>
                   }
-                  color="secondary" onChange={handleChange}
+                  color="secondary"
+                  onChange={handleChange}
                   inputRef={el => inputRef.current.password = el}
                   name="password"
                   label="Password"
@@ -115,10 +160,22 @@ function Register() {
               </FormControl>
               <br />
               <br />
-              <TextField type="text" label="First_name" name="first_name" color="secondary" onChange={handleChange} inputRef={el => inputRef.current.first_name = el} />
+              <TextField
+                type="text"
+                label="First_name"
+                name="first_name"
+                color="secondary"
+                onChange={handleChange}
+                inputRef={el => inputRef.current.first_name = el} />
               <br />
               <br />
-              <TextField type="text" label="Last_name" name="last_name" color="secondary" onChange={handleChange} inputRef={el => inputRef.current.last_name = el} />
+              <TextField
+                type="text"
+                label="Last_name"
+                name="last_name"
+                color="secondary"
+                onChange={handleChange}
+                inputRef={el => inputRef.current.last_name = el} />
               <br />
               <br />
               <Typography variant="h5">Profile</Typography><br />
@@ -129,22 +186,50 @@ function Register() {
                   name="gender"
                   onChange={handleData}
                 >
-                  <FormControlLabel value="F" name="gender" control={<Radio />} label="Female" />
-                  <FormControlLabel value="M" name="gender" control={<Radio />} label="Male" />
+                  <FormControlLabel
+                    value="F"
+                    name="gender"
+                    control={<Radio />} label="Female" />
+                  <FormControlLabel
+                    value="M"
+                    name="gender"
+                    control={<Radio />} label="Male" />
                 </RadioGroup>
               </FormControl>
               <br />
               <br />
-              <TextField type="text" label="phone_number" name="phone_number" color="secondary" onChange={handleData} inputRef={el => inputRef.current.phone_number = el} />
+              <TextField
+                type="text"
+                label="phone_number"
+                name="phone_number"
+                color="secondary"
+                onChange={handleData}
+                inputRef={el => inputRef.current.phone_number = el} />
               <br />
               <br />
-              <TextField type="text" label="address" name="address" color="secondary" onChange={handleData} inputRef={el => inputRef.current.address = el} />
+              <TextField
+                type="text"
+                label="address"
+                name="address"
+                color="secondary"
+                onChange={handleData}
+                inputRef={el => inputRef.current.address = el} />
               <br />
               <br />
-              <TextField type="text" label="city" name="city" color="secondary" onChange={handleData} inputRef={el => inputRef.current.city = el} />
+              <TextField
+                type="text"
+                label="city"
+                name="city"
+                color="secondary"
+                onChange={handleData}
+                inputRef={el => inputRef.current.city = el} />
               <br />
               <br />
-              <Button onClick={handle} color="secondary">submit</Button>
+              <Button
+                onClick={handle}
+                color="secondary">
+                submit
+              </Button>
             </CardContent>
           </Card>
         </center>

@@ -1,6 +1,15 @@
 import React, { useState } from "react";
 
-import { Button, Card, CardContent, Checkbox, FormControlLabel, FormGroup, TextField, Typography } from "@mui/material";
+import {
+  Button,
+  Card,
+  CardContent,
+  Checkbox,
+  FormControlLabel,
+  FormGroup,
+  TextField,
+  Typography
+} from "@mui/material";
 import axios from "axios";
 
 import baseUrl from "./mode";
@@ -33,14 +42,15 @@ function ManagerFood() {
     form_data.append('is_vegan', check.is_vegan);
     form_data.append("is_organic", apidata.is_organic)
 
-    axios.post(baseUrl("/manager/foods/"),
-      form_data, {
-      headers: {
-        // 'Accept': 'application/json',
-        "Content-Type": "multipart/from-data",
-        "Authorization": `Token ${token}`
-      }
-    })
+    axios
+      .post(baseUrl("/manager/foods/"),
+        form_data, {
+        headers: {
+          // 'Accept': 'application/json',
+          "Content-Type": "multipart/from-data",
+          "Authorization": `Token ${token}`
+        }
+      })
       .then((response) => console.log(response.data))
       .catch((error) => console.log(error))
   }
@@ -48,24 +58,52 @@ function ManagerFood() {
   return (
     <div>
       <center>
-        <Card sx={{ maxWidth: 300, mt: 10, backgroundImage: 'url("https://i.pinimg.com/736x/88/2b/d0/882bd0741dc17bf561e3c8b974660592.jpg")' }}>
+        <Card
+          sx={{
+            maxWidth: 300,
+            mt: 10,
+            backgroundImage: 'url("https://i.pinimg.com/736x/88/2b/d0/882bd0741dc17bf561e3c8b974660592.jpg")'
+          }}>
           <CardContent>
             <Typography variant="h5">uploadfood</Typography>
-            <TextField name="name" label="name" color="secondary" type="text" onChange={handleChange} />
+            <TextField
+              name="name"
+              label="name"
+              color="secondary"
+              type="text"
+              onChange={handleChange} />
             <br />
             <br />
-            <TextField name="price" label="price" color="secondary" type="text" onChange={handleChange} />
+            <TextField
+              name="price"
+              label="price"
+              color="secondary"
+              type="text"
+              onChange={handleChange} />
             <br />
             <br />
-            <TextField name="image" color="secondary" type="file" onChange={handleImage} />
+            <TextField
+              name="image"
+              color="secondary"
+              type="file"
+              onChange={handleImage} />
             <br />
             <br />
             <FormGroup>
-              <FormControlLabel control={<Checkbox name="is_vegan" checked={check} onChange={handleClick} />} label="veg" />
+              <FormControlLabel
+                control={<Checkbox
+                  name="is_vegan"
+                  checked={check}
+                  onChange={handleClick} />} label="veg" />
             </FormGroup>
             <br />
             <br />
-            <Button variant="outlined" color="secondary" onClick={handleSubmit}>submit</Button>
+            <Button
+              variant="outlined"
+              color="secondary"
+              onClick={handleSubmit}>
+              submit
+            </Button>
           </CardContent>
         </Card>
       </center>

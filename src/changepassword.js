@@ -1,7 +1,17 @@
 import React, { useState } from "react";
 
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import { Button, Card, CardContent, FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput, Typography } from "@mui/material";
+import {
+  Button,
+  Card,
+  CardContent,
+  FormControl,
+  IconButton,
+  InputAdornment,
+  InputLabel,
+  OutlinedInput,
+  Typography
+} from "@mui/material";
 import axios from "axios";
 
 import baseUrl from "./mode";
@@ -30,13 +40,14 @@ function ChangePassword() {
   const token = localStorage.getItem("token")
 
   const loadData = () => {
-    axios.put(baseUrl("api/change-password/"), apidata, {
-      headers: {
-        'Accept': 'application/json',
-        "Content-Type": 'application/json',
-        "Authorization": `Token ${token}`
-      }
-    })
+    axios
+      .put(baseUrl("api/change-password/"), apidata, {
+        headers: {
+          'Accept': 'application/json',
+          "Content-Type": 'application/json',
+          "Authorization": `Token ${token}`
+        }
+      })
       .then((response) => console.log(response.data))
       .catch((error) => console.log(error))
   }
@@ -64,7 +75,9 @@ function ChangePassword() {
                     </IconButton>
                   </InputAdornment>
                 }
-                color="secondary" value={apidata.old_password} onChange={handling}
+                color="secondary"
+                value={apidata.old_password}
+                onChange={handling}
                 name="old_password"
                 label="old_Password"
               />

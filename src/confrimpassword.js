@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { Button, Card, CardContent, TextField, Typography } from "@mui/material";
+import {
+    Button,
+    Card,
+    CardContent,
+    TextField,
+    Typography
+} from "@mui/material";
 import axios from "axios";
 
 import baseUrl from "./mode";
@@ -12,7 +18,8 @@ function ConfrimPassword() {
     }
 
     const loadData = () => {
-        axios.post(baseUrl("/api/password_reset/confirm/"), apidata)
+        axios
+            .post(baseUrl("/api/password_reset/confirm/"), apidata)
             .then((response) => console.log(response.data))
             .catch((error) => console.log(error))
     }
@@ -23,10 +30,18 @@ function ConfrimPassword() {
                 <Card sx={{ maxWidth: 350, mt: 15 }}>
                     <CardContent>
                         <Typography variant="h5">confirm resetpassword</Typography>
-                        <TextField name="password" type='text' label='password' onChange={handleChange} />
+                        <TextField
+                            name="password"
+                            type='text'
+                            label='password'
+                            onChange={handleChange} />
                         <br />
                         <br />
-                        <TextField name="token" type='text' label='token' onChange={handleChange} />
+                        <TextField
+                            name="token"
+                            type='text'
+                            label='token'
+                            onChange={handleChange} />
                         <br />
                         <br />
                         <Button onClick={loadData}>submit</Button>

@@ -167,12 +167,22 @@ function Appbar() {
 
   return (
     <div>
-      {location.pathname !== "/" &&
+      {/* Instead of */}
+      {/* {location.pathname !== "/" &&
         location.pathname !== "/login" &&
         location.pathname !== "/customer_register" &&
         location.pathname !== "/manager_register" &&
         location.pathname !== '/resetpassword' &&
-        location.pathname !== '/confirmpassword' ?
+        location.pathname !== '/confirmpassword' ? */}
+
+      {/* use */}
+      {!["/",
+        "/login",
+        "/customer_register",
+        "/manager_register",
+        "/resetpassword",
+        "/confirmpassword",].includes(location.pathname)
+       ?
         <Box sx={{ display: 'flex' }}>
           <AppBar position="fixed" sx={{ backgroundColor: "gray" }}>
             <Toolbar>

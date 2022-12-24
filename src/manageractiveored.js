@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from "react";
 
-import { Box, Button, Card, CardContent, CardMedia, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Card,
+  CardContent,
+  CardMedia,
+  Typography
+} from "@mui/material";
 import axios from "axios";
 
 import Loader from "./loader";
@@ -18,13 +25,14 @@ function ManagerActiveOrder() {
   const loadData = () => {
     setLoad(true)
     setTimeout(() => {
-      axios.get(baseUrl("/manager/activeorders/"), {
-        headers: {
-          'Accept': 'application/json',
-          "Content-Type": 'application/json',
-          "Authorization": `Token ${token}`
-        }
-      })
+      axios
+        .get(baseUrl("/manager/activeorders/"), {
+          headers: {
+            'Accept': 'application/json',
+            "Content-Type": 'application/json',
+            "Authorization": `Token ${token}`
+          }
+        })
         .then((response) => setApidata(response.data))
         .catch((error) => console.log(error))
       setLoad(false)
@@ -33,37 +41,40 @@ function ManagerActiveOrder() {
   }
 
   const profileData = () => {
-    axios.get(baseUrl("/profile/"), {
-      headers: {
-        'Accept': 'application/json',
-        "Content-Type": 'application/json',
-        "Authorization": `Token ${token}`
-      }
-    })
+    axios
+      .get(baseUrl("/profile/"), {
+        headers: {
+          'Accept': 'application/json',
+          "Content-Type": 'application/json',
+          "Authorization": `Token ${token}`
+        }
+      })
       .then((response) => setView(response.data))
       .catch((error) => console.log(error))
   }
 
   const loadData1 = () => {
-    axios.get(baseUrl("/cartlist/"), {
-      headers: {
-        'Accept': 'application/json',
-        "Content-Type": 'application/json',
-        "Authorization": `Token ${token}`
-      }
-    })
+    axios
+      .get(baseUrl("/cartlist/"), {
+        headers: {
+          'Accept': 'application/json',
+          "Content-Type": 'application/json',
+          "Authorization": `Token ${token}`
+        }
+      })
       .then((response) => setData(response.data))
       .catch((error) => console.log(error))
   }
 
   const loadData2 = () => {
-    axios.get(baseUrl("/food/"), {
-      headers: {
-        'Accept': 'application/json',
-        "Content-Type": 'application/json',
-        "Authorization": `Token ${token}`
-      }
-    })
+    axios
+      .get(baseUrl("/food/"), {
+        headers: {
+          'Accept': 'application/json',
+          "Content-Type": 'application/json',
+          "Authorization": `Token ${token}`
+        }
+      })
       .then((response) => setFood(response.data))
       .catch((error) => console.log(error))
   }
@@ -71,13 +82,14 @@ function ManagerActiveOrder() {
   const acceptData = (id) => {
     console.log("id", id)
     const body = { is_accepted: true }
-    axios.put(baseUrl(`/manager/accept/${id}/`), body, {
-      headers: {
-        'Accept': 'application/json',
-        "Content-Type": 'application/json',
-        "Authorization": `Token ${token}`
-      }
-    })
+    axios
+      .put(baseUrl(`/manager/accept/${id}/`), body, {
+        headers: {
+          'Accept': 'application/json',
+          "Content-Type": 'application/json',
+          "Authorization": `Token ${token}`
+        }
+      })
       .then(() => loadData())
     // .then((response) => console.log(response.data))
     // .catch((error) => console.log(error))
@@ -86,13 +98,14 @@ function ManagerActiveOrder() {
   const cancelData = (id) => {
     console.log("id", id)
     const body = { is_cancelled: true }
-    axios.put(baseUrl(`/manager/cancell/${id}/`), body, {
-      headers: {
-        'Accept': 'application/json',
-        "Content-Type": 'application/json',
-        "Authorization": `Token ${token}`
-      }
-    })
+    axios
+      .put(baseUrl(`/manager/cancell/${id}/`), body, {
+        headers: {
+          'Accept': 'application/json',
+          "Content-Type": 'application/json',
+          "Authorization": `Token ${token}`
+        }
+      })
       .then(() => loadData())
     // .then((response) => console.log(response.data))
     // .catch((error) => console.log(error))
@@ -108,7 +121,11 @@ function ManagerActiveOrder() {
   return (
     <div>
       <center>
-        <Typography variant="h5" sx={{ mt: 10 }}>FoodOrder Details</Typography>
+        <Typography
+          variant="h5"
+          sx={{ mt: 10 }}>
+          FoodOrder Details
+        </Typography>
       </center>
       {load ? <Loader load={load} /> : <>
         {apidata?.filter((ele) => ele.is_cancelled === false).map((el) => {
@@ -127,26 +144,63 @@ function ManagerActiveOrder() {
                                   return (
                                     <>
                                       <center>
-                                        <Card sx={{ maxWidth: 600, height: 250, mt: 5, display: 'flex' }}>
+                                        <Card
+                                          sx={{
+                                            maxWidth: 600,
+                                            height: 250,
+                                            mt: 5,
+                                            display: 'flex'
+                                          }}>
                                           <CardMedia
                                             component="img"
                                             sx={{ width: 300 }}
                                             image={foodlist.image}
                                             alt="Live from space album cover"
                                           />
-                                          <Box sx={{ display: 'flex', flexDirection: 'row' }}>
+                                          <Box
+                                            sx={{
+                                              display: 'flex',
+                                              flexDirection: 'row'
+                                            }}>
                                             <CardContent>
-                                              <Typography>CustomerName:{lists.username}</Typography>
-                                              <Typography>Address:{lists.profile?.address}</Typography>
-                                              <Typography>City:{lists.profile?.city}</Typography>
-                                              <Typography>Phone-No:{lists.profile?.phone_number}</Typography>
-                                              <Typography>food:{del.name}</Typography>
-                                              <Typography>Quantity:{del.quantity}</Typography>
-                                              <Typography>total_price:{el.total_price}</Typography>
-                                              <Typography>note:{el.note}</Typography>
+                                              <Typography>
+                                                CustomerName:{lists.username}
+                                              </Typography>
+                                              <Typography>
+                                                Address:{lists.profile?.address}
+                                              </Typography>
+                                              <Typography>
+                                                City:{lists.profile?.city}
+                                              </Typography>
+                                              <Typography>
+                                                Phone-No:{lists.profile?.phone_number}
+                                              </Typography>
+                                              <Typography>
+                                                food:{del.name}
+                                              </Typography>
+                                              <Typography>
+                                                Quantity:{del.quantity}
+                                              </Typography>
+                                              <Typography>
+                                                total_price:{el.total_price}
+                                              </Typography>
+                                              <Typography>
+                                                note:{el.note}
+                                              </Typography>
                                               {el.is_accepted === false ?
-                                                <Button variant="outlined" color="secondary" onClick={() => acceptData(el.id)}>accept</Button> : <></>}&nbsp;
-                                              <Button variant="outlined" color="secondary" onClick={() => cancelData(el.id)}>cancel</Button>
+                                                <Button
+                                                  variant="outlined"
+                                                  color="secondary"
+                                                  onClick={() => acceptData(el.id)}>
+                                                  accept
+                                                </Button>
+                                                : <></>}&nbsp;
+                                              <Button
+                                                variant="outlined"
+                                                color="secondary"
+                                                onClick={() => cancelData(el.id)}>
+                                                cancel
+                                              </Button>
                                             </CardContent>
                                           </Box>
                                         </Card>

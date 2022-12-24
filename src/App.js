@@ -32,18 +32,18 @@ function App() {
           <Route path='/managerlogin' element={<ManagerLogin />} />
           <Route path='/customer_register' element={<Register />} />
           <Route path='/manager_register' element={<ManagerRegister />} />
-          <Route path='/restaurants' element={<Privateroute><Restaurants /></Privateroute>} />
-          <Route path='/restaurants_reg' element={<Privateroute><Newrestaurant /></Privateroute>} />
-          <Route path='/foodlist' element={<Privateroute><Foodlist /></Privateroute>} />
-          <Route path='/uploadfood' element={<Privateroute><ManagerFood /></Privateroute>} />
-          <Route path="/managerfoodlist" element={<Privateroute><ManagerFoodList /></Privateroute>} />
-          <Route path='/manageractiveorder' element={<Privateroute><ManagerActiveOrder /></Privateroute>} />
-          <Route path='/customeractiveorder' element={<Privateroute><CustomeractiveOrder /></Privateroute>} />
-          <Route path='/customerdeliveryorder' element={<Privateroute><CustomerDeliverOrderlist /></Privateroute>} />
-          <Route path='/managerdelivery' element={<Privateroute><ManagerDeliveryOrder /></Privateroute>} />
-          <Route path='/changepassword' element={<Privateroute><ChangePassword /></Privateroute>} />
-          <Route path='/resetpassword' element={<Privateroute><ResetPassword /></Privateroute>} />
-          <Route path='/confirmpassword' element={<Privateroute><ConfrimPassword /></Privateroute>} />
+          <Route path='/restaurants' element={<Privateroute component={<Restaurants />}/>} />
+          <Route path='/restaurants_reg' element={<Privateroute component={<Newrestaurant />}/>} />
+          <Route path='/foodlist' element={<Privateroute component={<Foodlist />}/>} />
+          <Route path='/uploadfood' element={<Privateroute component={<ManagerFood />}/>} />
+          <Route path="/managerfoodlist" element={<Privateroute component={<ManagerFoodList />}/>} />
+          <Route path='/manageractiveorder' element={<Privateroute component={<ManagerActiveOrder />}/>} />
+          <Route path='/customeractiveorder' element={<Privateroute component={<CustomeractiveOrder />}/>} />
+          <Route path='/customerdeliveryorder' element={<Privateroute component={<CustomerDeliverOrderlist />}/>} />
+          <Route path='/managerdelivery' element={<Privateroute component={<ManagerDeliveryOrder />}/>} />
+          <Route path='/changepassword' element={<Privateroute component={<ChangePassword />}/>} />
+          <Route path='/resetpassword' element={<Privateroute component={<ResetPassword />}/>} />
+          <Route path='/confirmpassword' element={<Privateroute component={<ConfrimPassword />}/>} />
         </Routes>
       </Router>
     </div>

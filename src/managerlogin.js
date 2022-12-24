@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { Button, Card, CardContent, TextField, Typography } from "@mui/material";
+import {
+  Button,
+  Card,
+  CardContent,
+  TextField,
+  Typography
+} from "@mui/material";
 import axios from "axios";
 
 import baseUrl from "./mode";
@@ -12,17 +18,18 @@ function ManagerLogin() {
   const navigate = useNavigate()
 
   const loadData = () => {
-    axios.post(baseUrl("/login/"), apiData)
+    axios
+      .post(baseUrl("/login/"), apiData)
       .then((response) => setTokenDetails(response.data.token))
       .catch((error) => console.log(error))
   }
 
-  const handling = (e) => {
+  const handleChange = (e) => {
     setApiData({ ...apiData, [e.target.name]: e.target.value })
   }
 
   useEffect(() => {
-    if (tokenDetails !== "") {
+    if (!tokenDetails) {
       localStorage.setItem("token", tokenDetails)
       navigate("/restaurants")
     }
@@ -38,13 +45,30 @@ function ManagerLogin() {
         <Card sx={{ maxWidth: 275 }}>
           <CardContent>
             <Typography>Login...</Typography>
-            <TextField type="text" label="username" name="username" color="secondary" value={apiData.username} onChange={handling} />
+            <TextField
+              type="text"
+              label="username"
+              name="username"
+              color="secondary"
+              value={apiData.username}
+              onChange={handleChange} />
             <br />
             <br />
-            <TextField type="password" label="password" name="password" color="secondary" value={apiData.password} onChange={handling} />
+            <TextField
+              type="password"
+              label="password"
+              name="password"
+              color="secondary"
+              value={apiData.password}
+              onChange={handleChange} />
             <br />
             <br />
-            <Button variant="outlined" color="secondary" onClick={loadData}>submit</Button>
+            <Button
+              variant="outlined"
+              color="secondary"
+              onClick={loadData}>
+              submit
+            </Button>
           </CardContent>
         </Card>
       </center>

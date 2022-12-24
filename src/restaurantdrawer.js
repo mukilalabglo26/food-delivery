@@ -1,6 +1,16 @@
 import React, { useEffect, useState } from "react";
 
-import { Box, Divider, Drawer, IconButton, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
+import {
+  Box,
+  Divider,
+  Drawer,
+  IconButton,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText
+} from "@mui/material";
 import MenuIcon from '@mui/icons-material/Menu';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import DeliveryDiningIcon from '@mui/icons-material/DeliveryDining';
@@ -84,13 +94,23 @@ function RestauratDrawer() {
     >
       <List>
         <ListItem>
-          <IconButton onClick={toggleDrawer(anchor, false)} sx={{ ml: 23 }} ><CloseIcon /></IconButton>
+          <IconButton
+            onClick={toggleDrawer(anchor, false)}
+            sx={{ ml: 23 }} >
+            <CloseIcon />
+          </IconButton>
         </ListItem>
         <Divider />
-        {[{ name: 'Restaurant-register', icon: <AppRegistrationIcon /> }, { name: 'Uploadfood', icon: <RestaurantMenuIcon /> }, { name: 'Orderlist', icon: <NotificationsIcon /> },
-        { name: 'Delivery-list', icon: <DeliveryDiningIcon /> }, { name: 'Foodlist', icon: <RamenDiningIcon /> }, { name: 'Restaurants List', icon: <StorefrontIcon /> }].map((text, index) => (
+        {[{ name: 'Restaurant-register', icon: <AppRegistrationIcon /> },
+        { name: 'Uploadfood', icon: <RestaurantMenuIcon /> },
+        { name: 'Orderlist', icon: <NotificationsIcon /> },
+        { name: 'Delivery-list', icon: <DeliveryDiningIcon /> },
+        { name: 'Foodlist', icon: <RamenDiningIcon /> },
+        { name: 'Restaurants List', icon: <StorefrontIcon /> }].map((text, index) => (
           <ListItem key={text} >
-            <ListItemButton sx={{ backgroundColor: active === text.name ? "gainsboro" : "" }} onClick={() => handlingChange(index)}>
+            <ListItemButton
+              sx={{ backgroundColor: active === text.name ? "gainsboro" : "" }}
+              onClick={() => handlingChange(index)}>
               <ListItemIcon>
                 {text.icon}
               </ListItemIcon>
@@ -111,11 +131,13 @@ function RestauratDrawer() {
     <div>
       {['left'].map((anchor) => (
         <React.Fragment key={anchor}>
-          <MenuIcon color="inherit" onClick={toggleDrawer(anchor, true)} />
+          <MenuIcon
+            color="inherit"
+            onClick={toggleDrawer(anchor, true)} />
           <Drawer
             anchor={anchor}
             open={state[anchor]}
-          onClose={toggleDrawer(anchor, false)}
+            onClose={toggleDrawer(anchor, false)}
           >
             {list(anchor)}
           </Drawer>

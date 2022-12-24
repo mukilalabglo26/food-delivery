@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from "react";
 
-import { Button, Card, CardContent, CardMedia, Typography } from "@mui/material";
+import {
+    Button,
+    Card,
+    CardContent,
+    CardMedia,
+    Typography
+} from "@mui/material";
 import { Box } from "@mui/system";
 import axios from "axios";
 
@@ -18,13 +24,14 @@ function CustomeractiveOrder() {
     const loadData = () => {
         setLoad(true)
         setTimeout(() => {
-            axios.get(baseUrl("/customer/activeorders/"), {
-                headers: {
-                    'Accept': 'application/json',
-                    "Content-Type": 'application/json',
-                    "Authorization": `Token ${token}`
-                }
-            })
+            axios
+                .get(baseUrl("/customer/activeorders/"), {
+                    headers: {
+                        'Accept': 'application/json',
+                        "Content-Type": 'application/json',
+                        "Authorization": `Token ${token}`
+                    }
+                })
                 .then((response) => setApidata(response.data))
                 .catch((error) => console.log(error))
             setLoad(false)
@@ -33,13 +40,14 @@ function CustomeractiveOrder() {
     }
 
     const loadData2 = () => {
-        axios.get(baseUrl("/food/"), {
-            headers: {
-                'Accept': 'application/json',
-                "Content-Type": "application/json",
-                "Authorization": `Token ${token}`
-            }
-        })
+        axios
+            .get(baseUrl("/food/"), {
+                headers: {
+                    'Accept': 'application/json',
+                    "Content-Type": "application/json",
+                    "Authorization": `Token ${token}`
+                }
+            })
             .then((response) => setFood(response.data))
             .catch((error) => console.log(error))
     }
@@ -47,13 +55,14 @@ function CustomeractiveOrder() {
     const cancelData = (id) => {
         console.log("id", id)
         const body = { is_cancelled: true }
-        axios.put(baseUrl(`/customer/cancell/${id}/`), body, {
-            headers: {
-                'Accept': 'application/json',
-                "Content-Type": 'application/json',
-                "Authorization": `Token ${token}`
-            }
-        })
+        axios
+            .put(baseUrl(`/customer/cancell/${id}/`), body, {
+                headers: {
+                    'Accept': 'application/json',
+                    "Content-Type": 'application/json',
+                    "Authorization": `Token ${token}`
+                }
+            })
             .then(() => loadData())
             .catch((error) => console.log(error))
     }
@@ -61,25 +70,27 @@ function CustomeractiveOrder() {
     const aproveDelivered = (id) => {
         console.log("id", id)
         const body = { is_delivered: true }
-        axios.put(baseUrl(`/customer/approvedelivered/${id}/`), body, {
-            headers: {
-                'Accept': 'application/json',
-                "Content-Type": 'application/json',
-                "Authorization": `Token ${token}`
-            }
-        })
+        axios
+            .put(baseUrl(`/customer/approvedelivered/${id}/`), body, {
+                headers: {
+                    'Accept': 'application/json',
+                    "Content-Type": 'application/json',
+                    "Authorization": `Token ${token}`
+                }
+            })
             .then(() => loadData())
             .catch((error) => console.log(error))
     }
 
     const loadData1 = () => {
-        axios.get(baseUrl("/cartlist/"), {
-            headers: {
-                'Accept': 'application/json',
-                "Content-Type": 'application/json',
-                "Authorization": `Token ${token}`
-            }
-        })
+        axios
+            .get(baseUrl("/cartlist/"), {
+                headers: {
+                    'Accept': 'application/json',
+                    "Content-Type": 'application/json',
+                    "Authorization": `Token ${token}`
+                }
+            })
             .then((response) => setData(response.data))
             .catch((error) => console.log(error))
     }

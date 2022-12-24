@@ -1,6 +1,16 @@
 import React, { useEffect, useState } from "react";
 
-import { Box, Divider, Drawer, IconButton, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
+import {
+  Box,
+  Divider,
+  Drawer,
+  IconButton,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText
+} from "@mui/material";
 import MenuIcon from '@mui/icons-material/Menu';
 import { useLocation, useNavigate } from "react-router-dom";
 import NotificationsIcon from '@mui/icons-material/Notifications';
@@ -71,11 +81,16 @@ function Drawermodel() {
     >
       <List>
         <ListItem>
-          <IconButton onClick={toggleDrawer(anchor, false)} sx={{ ml: 23 }} ><CloseIcon /></IconButton>
+          <IconButton onClick={toggleDrawer(anchor, false)}
+            sx={{ ml: 23 }} >
+            <CloseIcon />
+          </IconButton>
         </ListItem>
         <Divider />
-        {[{ name: 'Customeractiveorder', icon: <NotificationsIcon /> }, { name: 'Delivery-list', icon: <DeliveryDiningIcon /> },
-        { name: 'Restaurants List', icon: <StorefrontIcon /> }, { name: 'Food Menu', icon: <RamenDiningIcon /> }].map((text, index) => (
+        {[{ name: 'Customeractiveorder', icon: <NotificationsIcon /> },
+        { name: 'Delivery-list', icon: <DeliveryDiningIcon /> },
+        { name: 'Restaurants List', icon: <StorefrontIcon /> },
+        { name: 'Food Menu', icon: <RamenDiningIcon /> }].map((text, index) => (
           <ListItem key={text} >
             <ListItemButton sx={{ backgroundColor: active === text.name ? "gainsboro" : "" }} onClick={() => handlingChange(index)}>
               <ListItemIcon>
@@ -102,7 +117,7 @@ function Drawermodel() {
           <Drawer
             anchor={anchor}
             open={state[anchor]}
-          onClose={toggleDrawer(anchor, false)}
+            onClose={toggleDrawer(anchor, false)}
           >
             {list(anchor)}
           </Drawer>

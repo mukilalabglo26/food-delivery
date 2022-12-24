@@ -1,6 +1,23 @@
 import React, { useEffect, useState } from "react";
 
-import { Box, Button, Card, CardContent, CardMedia, Checkbox, Dialog, DialogActions, DialogTitle, FormControlLabel, FormGroup, Grid, IconButton, Modal, TextField, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Card,
+  CardContent,
+  CardMedia,
+  Checkbox,
+  Dialog,
+  DialogActions,
+  DialogTitle,
+  FormControlLabel,
+  FormGroup,
+  Grid,
+  IconButton,
+  Modal,
+  TextField,
+  Typography
+} from "@mui/material";
 import axios from "axios";
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
@@ -31,8 +48,8 @@ function ManagerFoodList() {
   const [image, setImage] = useState()
   const [open, setOpen] = useState(false);
   const [load, setLoad] = useState(false)
-  const [dialog,setDialog] = useState(false)
-  const [id,setId] = useState('')
+  const [dialog, setDialog] = useState(false)
+  const [id, setId] = useState('')
 
   const handleClose = () => setOpen(false);
 
@@ -41,13 +58,14 @@ function ManagerFoodList() {
   const loadData = () => {
     setLoad(true)
     setTimeout(() => {
-      axios.get(baseUrl("/manager/foods/"), {
-        headers: {
-          'Accept': 'application/json',
-          "Content-Type": "application/json",
-          "Authorization": `Token ${token}`
-        }
-      })
+      axios
+        .get(baseUrl("/manager/foods/"), {
+          headers: {
+            'Accept': 'application/json',
+            "Content-Type": "application/json",
+            "Authorization": `Token ${token}`
+          }
+        })
         .then((response) => setApidata(response.data))
         .catch((error) => console.log(error))
       setLoad(false)
@@ -57,13 +75,14 @@ function ManagerFoodList() {
 
   const deleteData = () => {
     setDialog(false);
-    axios.delete(baseUrl(`/manager/foods/${id}/`), {
-      headers: {
-        'Accept': 'application/json',
-        "Content-Type": "application/json",
-        "Authorization": `Token ${token}`
-      }
-    })
+    axios
+      .delete(baseUrl(`/manager/foods/${id}/`), {
+        headers: {
+          'Accept': 'application/json',
+          "Content-Type": "application/json",
+          "Authorization": `Token ${token}`
+        }
+      })
       .then(() => loadData())
     // .then((response) => console.log(response.data))
     // .catch((error) => console.log(error))
@@ -78,14 +97,15 @@ function ManagerFoodList() {
     form_data.append('is_vegan', check.is_vegan);
     form_data.append("is_organic", organic.is_organic)
 
-    axios.put(baseUrl(`/manager/foods/${edit.id}/`),
-      form_data, {
-      headers: {
-        'Accept': 'application/json',
-        "Content-Type": "multipart/form-data",
-        "Authorization": `Token ${token}`
-      }
-    })
+    axios
+      .put(baseUrl(`/manager/foods/${edit.id}/`),
+        form_data, {
+        headers: {
+          'Accept': 'application/json',
+          "Content-Type": "multipart/form-data",
+          "Authorization": `Token ${token}`
+        }
+      })
       .then((response) => console.log(response.data))
       .catch((error) => console.log(error))
   }
@@ -139,7 +159,12 @@ function ManagerFoodList() {
           {apidata?.map((el) => {
             return (
               <>
-                <Grid item xs={12} sm={6} md={4} key={apidata.indexOf(el)} >
+                <Grid
+                  item
+                  xs={12}
+                  sm={6}
+                  md={4}
+                  key={apidata.indexOf(el)} >
                   <Card sx={{ maxWidth: 300, mt: 10, ml: 5 }}>
                     <CardMedia
                       component="img"
@@ -150,12 +175,12 @@ function ManagerFoodList() {
                     <CardContent>
                       <Typography>{el.name}</Typography>
                       <Typography>{el.price}</Typography>
-                      <IconButton onClick={()=>handleClickOpen(el.id)} color="primary">
+                      <IconButton onClick={() => handleClickOpen(el.id)} color="primary">
                         <DeleteOutlineIcon color="primary" />Delete</IconButton>
                       <Dialog
                         open={dialog}
                         onClose={handleDeleteClose}
-                       hideBackdrop
+                        hideBackdrop
                       >
                         <DialogTitle id="alert-dialog-title">
                           {"Do You Want To Delete?"}
@@ -171,34 +196,66 @@ function ManagerFoodList() {
                         <ModeEditIcon />Edit</IconButton>
                       <Modal
                         open={open}
-                      onClose={handleClose}
+                        onClose={handleClose}
                       >
                         <Box sx={style}>
-                          <IconButton onClick={handleClose} sx={{ marginLeft: 45 }} color="black"><CloseIcon /></IconButton>
+                          <IconButton
+                            onClick={handleClose}
+                            sx={{ marginLeft: 45 }}
+                            color="black">
+                            <CloseIcon />
+                          </IconButton>
                           {update ? <></> : <>
                             <Card sx={{ maxWidth: 300 }}>
                               <CardContent>
                                 <Typography variant="h5">uploadfood</Typography>
-                                <TextField name="name" color="secondary" type="text" value={current.name} onChange={handleChange} />
+                                <TextField
+                                  name="name"
+                                  color="secondary"
+                                  type="text"
+                                  value={current.name}
+                                  onChange={handleChange} />
                                 <br />
                                 <br />
-                                <TextField name="price" color="secondary" type="text" value={current.price} onChange={handleChange} />
+                                <TextField
+                                  name="price"
+                                  color="secondary"
+                                  type="text"
+                                  value={current.price}
+                                  onChange={handleChange} />
                                 <br />
                                 <br />
-                                <TextField name="image" color="secondary" type="file" onChange={handleImage} />
+                                <TextField
+                                  name="image"
+                                  color="secondary"
+                                  type="file"
+                                  onChange={handleImage} />
                                 <br />
                                 <br />
                                 <FormGroup>
-                                  <FormControlLabel control={<Checkbox name="is_vegan" checked={check.is_vegan} onChange={handleClick} />} label="vegan" />
+                                  <FormControlLabel
+                                    control={<Checkbox
+                                      name="is_vegan"
+                                      checked={check.is_vegan}
+                                      onChange={handleClick} />} label="vegan" />
                                 </FormGroup>
                                 <br />
                                 <br />
                                 <FormGroup>
-                                  <FormControlLabel control={<Checkbox name="is_organic" checked={organic.is_organic} onChange={handleClick1} />} label="organic" />
+                                  <FormControlLabel
+                                    control={<Checkbox
+                                      name="is_organic"
+                                      checked={organic.is_organic}
+                                      onChange={handleClick1} />} label="organic" />
                                 </FormGroup>
                                 <br />
                                 <br />
-                                <Button variant="outlined" color="secondary" onClick={handleSubmit}>submit</Button>
+                                <Button
+                                  variant="outlined"
+                                  color="secondary"
+                                  onClick={handleSubmit}>
+                                  submit
+                                </Button>
                               </CardContent>
                             </Card>
 

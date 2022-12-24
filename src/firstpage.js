@@ -2,7 +2,12 @@
 import React from "react";
 
 import Grid from '@mui/material/Grid';
-import { Button, Card, CardContent, Typography } from "@mui/material";
+import {
+  Button,
+  Card,
+  CardContent,
+  Typography
+} from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import StorefrontIcon from '@mui/icons-material/Storefront';
 
@@ -25,17 +30,34 @@ function Firstpage() {
     <>
       <center>
         <div className="h2">
-          <Typography variant="h4" sx={{ mt: 30 }}><em>Welcome To Balcony Food Delivery<StorefrontIcon /></em></Typography>
+          <Typography
+            variant="h4" s
+            x={{ mt: 30 }}>
+            <em>
+              Welcome To Balcony Food Delivery
+              <StorefrontIcon />
+            </em>
+          </Typography>
         </div>
       </center>
-      <div style={{ marginTop: "100px", marginLeft: "100px", marginRight: "100px" }} >
+      <div style={{
+        marginTop: "100px",
+        marginLeft: "100px",
+        marginRight: "100px"
+      }} >
         <Grid container spacing={2} >
           <Grid item xs={4} >
             <center>
-              <Card sx={{ maxWidth: 300, backgroundColor: "pink" }}>
+              <Card sx={{
+                maxWidth: 300,
+                backgroundColor: "pink"
+              }}>
                 <CardContent>
-                  <Typography variant="h5">customer_register</Typography>
-                  <Typography>Happy to sign-up
+                  <Typography variant="h5">
+                    customer_register
+                  </Typography>
+                  <Typography>
+                    Happy to sign-up
                     <br />
                     And Enjoy Your food
                     <br />
@@ -44,7 +66,12 @@ function Firstpage() {
                     Share Comment And Rate
                   </Typography>
                 </CardContent>
-                <Button variant="outlined" color="secondary" onClick={handle}>sign-up</Button>
+                <Button
+                  variant="outlined"
+                  color="secondary"
+                  onClick={handle}>
+                  sign-up
+                </Button>
                 <br />
                 <br />
               </Card>
@@ -52,10 +79,16 @@ function Firstpage() {
           </Grid>
           <Grid item xs={4}>
             <center>
-              <Card sx={{ maxWidth: 300, backgroundColor: "pink" }}>
+              <Card sx={{
+                maxWidth: 300,
+                backgroundColor: "pink"
+              }}>
                 <CardContent>
-                  <Typography variant="h5">Manager_register</Typography>
-                  <Typography>Happy to sign-up
+                  <Typography variant="h5">
+                    Manager_register
+                  </Typography>
+                  <Typography>
+                    Happy to sign-up
                     <br />
                     And Enjoy to share your Food
                     <br />
@@ -64,7 +97,12 @@ function Firstpage() {
                     Share Comment And Rate
                   </Typography>
                 </CardContent>
-                <Button variant="outlined" color="secondary" onClick={handleManage}>sign-up</Button>
+                <Button
+                  variant="outlined"
+                  color="secondary"
+                  onClick={handleManage}>
+                  sign-up
+                </Button>
                 <br />
                 <br />
               </Card>
@@ -72,10 +110,16 @@ function Firstpage() {
           </Grid>
           <Grid item xs={4}>
             <center>
-              <Card sx={{ maxWidth: 300, backgroundColor: "pink" }}>
+              <Card sx={{
+                maxWidth: 300,
+                backgroundColor: "pink"
+              }}>
                 <CardContent>
-                  <Typography variant="h5">Login</Typography>
-                  <Typography>Happy to Login
+                  <Typography variant="h5">
+                    Login
+                  </Typography>
+                  <Typography>
+                    Happy to Login
                     <br />
                     Enjoy your Food
                     <br />
@@ -84,7 +128,12 @@ function Firstpage() {
                     Share Comment And Rate
                   </Typography>
                 </CardContent>
-                <Button variant="outlined" color="secondary" onClick={handleLog}>login</Button>
+                <Button
+                  variant="outlined"
+                  color="secondary"
+                  onClick={handleLog}>
+                  login
+                </Button>
                 <br />
                 <br />
               </Card>

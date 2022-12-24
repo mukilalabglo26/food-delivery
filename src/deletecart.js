@@ -9,25 +9,27 @@ function DeleteCart() {
   const token = localStorage.getItem("token")
 
   const getCart = () => {
-    axios.get(baseUrl('/cart/'), {
-      headers: {
-        'Accept': 'application/json',
-        "Content-Type": "application/json",
-        "Authorization": `Token ${token}`
-      }
-    })
+    axios
+      .get(baseUrl('/cart/'), {
+        headers: {
+          'Accept': 'application/json',
+          "Content-Type": "application/json",
+          "Authorization": `Token ${token}`
+        }
+      })
       .then((response) => setApidata(response.data))
       .catch((error) => console.log(error))
   }
 
   const deleteCart = (id) => {
-    axios.delete(baseUrl(`/cart/${id}`), {
-      headers: {
-        'Accept': 'application/json',
-        "Content-Type": "application/json",
-        "Authorization": `Token ${token}`
-      }
-    })
+    axios
+      .delete(baseUrl(`/cart/${id}`), {
+        headers: {
+          'Accept': 'application/json',
+          "Content-Type": "application/json",
+          "Authorization": `Token ${token}`
+        }
+      })
       .then((response) => console.log(response.data))
       .catch((error) => console.log(error))
   }
